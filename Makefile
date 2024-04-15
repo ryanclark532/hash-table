@@ -15,7 +15,7 @@ $(BUILD_DIR)/lib%.so: $(BUILD_DIR)/%.o
 	gcc -shared $< -o $@
 
 $(BIN_DIR)/$(OUTPUT_BINARY): main.c $(LIBS)
-	gcc -o $@ $< -Wl,-rpath=$(BUILD_DIR) -L$(BUILD_DIR) $(patsubst $(BUILD_DIR)/lib%.so,-l%,$(LIBS))
+	gcc -o $@ $< -Wl,-rpath=$(BUILD_DIR) -L$(BUILD_DIR) $(patsubst $(BUILD_DIR)/lib%.so,-l%,$(LIBS)) -lm 
 
 clean:
 	rm -rf $(BUILD_DIR)/*.o $(BUILD_DIR)/*.so $(BIN_DIR)/*
